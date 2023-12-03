@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const userModel = require("./model/user.js");
 const bcrypt = require("bcrypt");
+const cors = require("cors");
 const app = express(); 
 
+app.use(cors());
 app.use(express.json())
 
 const SERVER_PORT = 3000;
