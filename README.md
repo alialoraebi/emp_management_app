@@ -4,5 +4,5 @@
 - Install Docker and Docker Compose.
 - Clone the GitHub repository.
 - Navigate to the root directory of the project.
-- Run docker-compose up to start the containers.
-- Access the application via http://localhost for frontend and http://localhost:3000 for backend APIs.
+- Run docker-compose up --build to start the containers.
+- Access the application via npm start for frontend and then run docker containers on docker desktop for backend APIs.
