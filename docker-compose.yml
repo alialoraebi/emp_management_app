@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  backend:
+    build: ./server
+    ports:
+      - "3000:3000"
+    links:
+      - mongodb
+    environment:
+      - DB_CONNECTION_STRING=mongodb://mongodb:27017/comp3123_assignment1
+  
+  frontend:
+    build: ./client
+    ports:
+      - "80:80"
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:
