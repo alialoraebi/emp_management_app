@@ -1,6 +1,6 @@
 const express = require("express");
 const userModel = require('../model/user.js'); 
-const bcrypt = require("bcrypt"); 
+const bcrypt = require("bcryptjs"); 
 const routes = express.Router();
 
 // // Get All Users
