@@ -10,7 +10,7 @@ function EmployeeList() {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/v1/employees');
+                const response = await axios.get('http://localhost:3000/api/v1/emp/employees');
                 setEmployees(response.data);
             } catch (error) {
                 console.error('Error fetching employees:', error);
@@ -32,15 +32,15 @@ function EmployeeList() {
                     <tr>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>Email Address</th>
+                        <th>Email</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {employees.map((employee) => (
                         <tr key={employee._id}>
-                            <td>{employee.firstName}</td>
-                            <td>{employee.lastName}</td>
+                            <td>{employee.first_name}</td>
+                            <td>{employee.last_name}</td>
                             <td>{employee.email}</td>
                             <td>
                                 <Link to={`/update-employee/${employee._id}`}>Update</Link>

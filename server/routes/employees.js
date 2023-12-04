@@ -22,6 +22,7 @@ routes.post("/employees", async (req, res) => {
         await newEmployee.save();
         res.status(201).json(newEmployee); 
     } catch(error) {
+        console.error('Error saving employee:', error);
         res.status(500).json({ message: error.message }); 
     }
 });
