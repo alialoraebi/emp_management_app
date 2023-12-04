@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import EmployeeList from './components/EmployeeList'; 
 import AddEmployee from './components/AddEmployee'; 
+import UpdateEmployee from './components/UpdateEmployee';
 import { AuthContext } from './components/AuthContext'; 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             {isLoggedIn && <Route path="/employees" element={<EmployeeList />} />} 
             {isLoggedIn && <Route path="/add-employee" element={<AddEmployee />} />} 
+            {isLoggedIn && <Route path="/update-employee/:id" element={<UpdateEmployee />} />}
           </Routes>
         </main>
       </div>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
     const { isLoggedIn } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchEmployees = async () => {
@@ -23,6 +24,17 @@ function EmployeeList() {
     if (!isLoggedIn) {
         return <p>You must be logged in to view this page.</p>;
     }
+
+    const deleteEmployee = async (id) => {
+        if (window.confirm('Are you sure you want to delete this employee?')) {
+          try {
+            await axios.delete(`http://localhost:3000/api/v1/emp/employees/${id}`);
+            setEmployees(employees.filter((employee) => employee._id !== id));
+          } catch (error) {
+            console.error('Error deleting employee:', error);
+          }
+        }
+      };
 
     return (
         <div>
@@ -43,9 +55,9 @@ function EmployeeList() {
                             <td>{employee.last_name}</td>
                             <td>{employee.email}</td>
                             <td>
-                                <Link to={`/update-employee/${employee._id}`}>Update</Link>
-                                <Link to={`/delete-employee/${employee._id}`}>Delete</Link>
-                                <Link to={`/view-employee/${employee._id}`}>View</Link>
+                                <button onClick={() => navigate.push(`/update-employee/${employee._id}`)}>Update</button>
+                                <button onClick={() => deleteEmployee(employee._id)}>Delete</button>
+                                <button onClick={() => navigate.push(`/view-employee/${employee._id}`)}>View</button>
                             </td>
                         </tr>
                     ))}
