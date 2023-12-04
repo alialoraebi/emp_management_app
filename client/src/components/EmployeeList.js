@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthContext';
+import '../App.css';
 
 function EmployeeList() {
     const [employees, setEmployees] = useState([]);
@@ -37,9 +38,9 @@ function EmployeeList() {
       };
 
     return (
-        <div>
-            <Link to="/add-employee">Add Employee</Link>
-            <table>
+        <div className="employee-list">
+            <Link to="/add-employee" className="add-employee-link">Add Employee</Link>
+            <table className="employee-table">
                 <thead>
                     <tr>
                         <th>First Name</th>
@@ -50,14 +51,16 @@ function EmployeeList() {
                 </thead>
                 <tbody>
                     {employees.map((employee) => (
-                        <tr key={employee._id}>
-                            <td>{employee.first_name}</td>
-                            <td>{employee.last_name}</td>
-                            <td>{employee.email}</td>
-                            <td>
-                                <button onClick={() => navigate.push(`/update-employee/${employee._id}`)}>Update</button>
-                                <button onClick={() => deleteEmployee(employee._id)}>Delete</button>
-                                <button onClick={() => navigate.push(`/view-employee/${employee._id}`)}>View</button>
+                        <tr key={employee._id} className="employee-row">
+                            <td className="employee-first-name">{employee.first_name}</td>
+                            <td className="employee-last-name">{employee.last_name}</td>
+                            <td className="employee-email">{employee.email}</td>
+                            <td className="employee-actions">
+                                <button onClick={() => navigate(`/update-employee/${employee._id}`)} className="update-button">Update</button>
+                                <button onClick={() => deleteEmployee(employee._id)} className="delete-button">Delete</button>
+                                <button onClick={() => navigate(`/view-employee/${employee._id}`)} className="view-button">View</button>
+
+
                             </td>
                         </tr>
                     ))}

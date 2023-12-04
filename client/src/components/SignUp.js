@@ -34,23 +34,23 @@ function SignUp() {
     } catch (error) {
       console.error("Error during sign up:", error);
       if (error.response && error.response.data) {
-        console.log('Error message:', error.response.data.message); // Add this line
+        console.log('Error message:', error.response.data.message); 
         setErrorMessage(error.response.data.message);
       } else {
-        // Error message
         setErrorMessage('An error occurred. Please try again later.');
       }
     }
   };
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="signup-form">
       <input
         type="text"
         name="username"
         value={formData.username}
         onChange={handleChange}
         placeholder="Username"
+        className="form-input"
       />
       <input
         type="email"
@@ -58,6 +58,7 @@ function SignUp() {
         value={formData.email}
         onChange={handleChange}
         placeholder="Email"
+        className="form-input"
       />
       <input
         type="password"
@@ -65,20 +66,18 @@ function SignUp() {
         value={formData.password}
         onChange={handleChange}
         placeholder="Password"
+        className="form-input"
       />
-      <button type="submit">Sign Up</button>
-
-      {signUpSuccess && <p>Sign up succeesful, <Link to="/login">Login here</Link>.</p>}
-
+      <button type="submit" className="submit-button">Sign Up</button>
+  
       {errorMessage && (
         <p className="error-message">
           {errorMessage}
-          {errorMessage.includes('Username already exists') && (
-            <span> <Link to="/login">Login here</Link>.</span>
+          {errorMessage.includes('User already exists') && (
+            <span> <Link to="/login" className="login-link">Login here</Link>.</span>
           )}
         </p>
       )}
-
     </form>
   );
 }

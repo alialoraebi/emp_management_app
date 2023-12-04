@@ -43,34 +43,36 @@ function Login() {
         }
       };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-                placeholder="Username"
-            />
-            <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Password"
-            />
-            <button type="submit">Login</button>
-
-            {errorMessage && (
-                <p className="error-message">
-                {errorMessage}
-                {errorMessage.includes('User not found') && (
-                    <span> <Link to="/">Sign up here</Link>.</span>
-                )}
-                </p>
-            )}
+      return (
+        <form onSubmit={handleSubmit} className="login-form">
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+            placeholder="Username"
+            className="form-input"
+          />
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Password"
+            className="form-input"
+          />
+          <button type="submit" className="submit-button">Login</button>
+      
+          {errorMessage && (
+            <p className="error-message">
+              {errorMessage}
+              {errorMessage.includes('User not found') && (
+                <span> <Link to="/" className="signup-link">Sign up here</Link>.</span>
+              )}
+            </p>
+          )}
         </form>
-    );
+      );
 }
 
 export default Login;

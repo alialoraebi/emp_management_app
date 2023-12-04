@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../App.css';
 
 function UpdateEmployee() {
     const [employee, setEmployee] = useState({
@@ -40,59 +41,33 @@ function UpdateEmployee() {
         }
     };
 
-    const handleCancel = () => {
-        navigate('/employees');
-    };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="first_name"
-                value={employee.first_name}
-                onChange={handleChange}
-                placeholder="First Name"
-                required
-            />
-            <input
-                type="text"
-                name="last_name"
-                value={employee.last_name}
-                onChange={handleChange}
-                placeholder="Last Name"
-                required
-            />
-            <input
-                type="email"
-                name="email"
-                value={employee.email}
-                onChange={handleChange}
-                placeholder="Email"
-                required
-            />
-            <select
-                name="gender"
-                value={employee.gender}
-                onChange={handleChange}
-                required
-            >
+        <form onSubmit={handleSubmit} className="update-form">
+          <label htmlFor="first_name" className="form-label">First Name:</label>
+          <input type="text" id="first_name" name="first_name" value={employee.first_name} onChange={handleChange} className="form-input" />
+      
+          <label htmlFor="last_name" className="form-label">Last Name:</label>
+          <input type="text" id="last_name" name="last_name" value={employee.last_name} onChange={handleChange} className="form-input" />
+      
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input type="email" id="email" name="email" value={employee.email} onChange={handleChange} className="form-input" />
+      
+          <label htmlFor="gender" className="form-label">Gender:</label>
+            <select id="gender" name="gender" value={employee.gender} onChange={handleChange} className="form-input">
                 <option value="">Select Gender</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            <input
-                type="number"
-                name="salary"
-                value={employee.salary}
-                onChange={handleChange}
-                placeholder="Salary"
-                required
-            />
-            <button type="submit">Save</button>
-            <button type="button" onClick={handleCancel}>Cancel</button>
+      
+          <label htmlFor="salary" className="form-label">Salary:</label>
+          <input type="number" id="salary" name="salary" value={employee.salary} onChange={handleChange} className="form-input" />
+      
+          <button type="submit" className="submit-button">Update Employee</button>
+          <button type="button" onClick={() => navigate('/employees')} className="cancel-button">Cancel</button>        
         </form>
-    );
+      );
 }
 
 export default UpdateEmployee;

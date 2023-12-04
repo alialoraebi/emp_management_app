@@ -1,0 +1,141 @@
+.App {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.App-header {
+    background-color: #282c34;
+    padding: 20px;
+    color: white;
+}
+
+.app-title {
+    font-size: 1.5em;
+}
+
+.app-nav {
+    margin-top: 10px;
+}
+
+.nav-link {
+    color: #61dafb;
+    text-decoration: none;
+}
+
+.app-main {
+    padding: 20px;
+}
+
+.employee-detail {
+    display: grid;
+    grid-template-columns: 100px auto;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+.employee-list, .employee-details {
+    margin-top: 20px;
+}
+
+.employee-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-row {
+    border-bottom: 1px solid #ddd;
+}
+
+.employee-row:hover {
+    background-color: #f5f5f5;
+}
+
+.update-form, .add-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+  
+.form-input, .submit-button {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    margin-top: 10px;
+}
+
+.form-input {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.submit-button, .cancel-button, .back-button, .update-button, .delete-button {
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.submit-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-button, .back-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.view-button {
+    background-color: #008CBA; 
+    color: white;
+    margin-top: 10px;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .employee-details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+  
+  .employee-details-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .employee-detail {
+    margin-bottom: 10px;
+  }
+  
+  .back-button {
+    background-color: #f44336; 
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+  }

@@ -7,6 +7,7 @@ import EmployeeList from './components/EmployeeList';
 import AddEmployee from './components/AddEmployee'; 
 import UpdateEmployee from './components/UpdateEmployee';
 import { AuthContext } from './components/AuthContext'; 
+import ViewEmployee from './components/ViewEmployee';
 
 function App() {
   const { isLoggedIn, logOut } = useContext(AuthContext); 
@@ -15,20 +16,21 @@ function App() {
     <Router>
       <div className="App">
         <header className="App-header">
-          <h1>Employee Management App</h1>
-          <nav>
-            {!isLoggedIn && <Link to="/">Sign Up</Link>}
-            {!isLoggedIn && <> | <Link to="/login">Login</Link></>}
-            {isLoggedIn && <NavLink to="/" onClick={logOut}>Logout</NavLink>}
+          <h1 className="app-title">Employee Management App</h1>
+          <nav className="app-nav">
+            {!isLoggedIn && <Link to="/" className="nav-link">Sign Up</Link>}
+            {!isLoggedIn && <> | <Link to="/login" className="nav-link">Login</Link></>}
+            {isLoggedIn && <NavLink to="/" onClick={logOut} className="nav-link">Logout</NavLink>}
           </nav>
         </header>
-        <main>
+        <main className="app-main">
           <Routes>
             <Route path="/" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             {isLoggedIn && <Route path="/employees" element={<EmployeeList />} />} 
             {isLoggedIn && <Route path="/add-employee" element={<AddEmployee />} />} 
             {isLoggedIn && <Route path="/update-employee/:id" element={<UpdateEmployee />} />}
+            {isLoggedIn && <Route path="/view-employee/:id" element={<ViewEmployee />} />}
           </Routes>
         </main>
       </div>
