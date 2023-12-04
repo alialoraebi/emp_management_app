@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AddEmployee() {
     const [employee, setEmployee] = useState({
@@ -10,7 +10,7 @@ function AddEmployee() {
         gender: '',
         salary: '',
     });
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -18,16 +18,17 @@ function AddEmployee() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Submitting employee data:', employee);
         try {
-            await axios.post('http://localhost:3000/api/v1/employees', employee);
-            history.push('/employees');
+            await axios.post('http://localhost:3000/api/v1/emp/employees', employee);
+            navigate('/employees');
         } catch (error) {
             console.error('Error adding employee:', error);
         }
     };
 
     const handleCancel = () => {
-        history.push('/employees');
+        navigate('/employees');
     };
 
     return (
