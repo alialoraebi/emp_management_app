@@ -43,7 +43,7 @@ function UpdateEmployee() {
 
 
     return (
-        <form onSubmit={handleSubmit} className="update-form">
+        <form onSubmit={handleSubmit} className="add-form">
           <label htmlFor="first_name" className="form-label">First Name:</label>
           <input type="text" id="first_name" name="first_name" value={employee.first_name} onChange={handleChange} className="form-input" />
       

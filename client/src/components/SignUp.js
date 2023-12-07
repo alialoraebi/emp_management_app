@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 
 
 function SignUp() {
@@ -12,6 +12,8 @@ function SignUp() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const [signUpSuccess, setSignUpSuccess] = useState(false); 
+  
+  const navigate = useNavigate();
 
   
   const handleChange = (e) => {
@@ -24,23 +26,25 @@ function SignUp() {
     e.preventDefault();
     if (!formData.username || !formData.email || !formData.password) {
       setErrorMessage('Please fill in all fields.');
-      return;
-    }
-    try {
-      const response = await axios.post('http://localhost:3000/api/v1/user/signup', formData);
-      console.log(response.data);
-      setErrorMessage(''); 
-      setSignUpSuccess(true); 
-    } catch (error) {
-      console.error("Error during sign up:", error);
-      if (error.response && error.response.data) {
-        console.log('Error message:', error.response.data.message); 
-        setErrorMessage(error.response.data.message);
-      } else {
-        setErrorMessage('An error occurred. Please try again later.');
+    } else {
+      try {
+        const response = await axios.post('http://localhost:3000/api/v1/user/signup', formData);
+        console.log(response.data);
+        setErrorMessage(''); 
+        setSignUpSuccess(true); 
+        navigate('/login'); 
+      } catch (error) {
+        console.error("Error during sign up:", error);
+        if (error.response && error.response.data) {
+          console.log('Error message:', error.response.data.message); 
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage('An error occurred. Please try again later.');
+        }
       }
     }
-  };
+  }
+
   
   return (
     <form onSubmit={handleSubmit} className="signup-form">
@@ -73,7 +77,7 @@ function SignUp() {
       {errorMessage && (
         <p className="error-message">
           {errorMessage}
-          {errorMessage.includes('User already exists') && (
+          {errorMessage.includes('Username already exists') && (
             <span> <Link to="/login" className="login-link">Login here</Link>.</span>
           )}
         </p>

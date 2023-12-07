@@ -39,7 +39,6 @@ function EmployeeList() {
 
     return (
         <div className="employee-list">
-            <Link to="/add-employee" className="add-employee-link">Add Employee</Link>
             <table className="employee-table">
                 <thead>
                     <tr>
@@ -59,13 +58,13 @@ function EmployeeList() {
                                 <button onClick={() => navigate(`/update-employee/${employee._id}`)} className="update-button">Update</button>
                                 <button onClick={() => deleteEmployee(employee._id)} className="delete-button">Delete</button>
                                 <button onClick={() => navigate(`/view-employee/${employee._id}`)} className="view-button">View</button>
-
-
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <Link to="/add-employee" className="add-employee-link">Add Employee</Link>
+
         </div>
     );
 }
