@@ -11,4 +11,4 @@
 ![Image Description](./screenshots/front-end4.png)
 
 ### Main Screen
-![Image Description](./screenshots/front-end7)
+![Image Description](./screenshots/front-end7.png)
