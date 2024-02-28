@@ -8,7 +8,7 @@
 - Access the application via npm start for frontend and then run docker containers on docker desktop for backend APIs.
 
 ### Login Screen
-![Image Description](../front-end4.png)
+![Image Description](./screenshots/front-end4.png)
 
 ### Main Screen
-![Image Description](../front-end7)
+![Image Description](./screenshots/front-end7)
